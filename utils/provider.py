@@ -15,7 +15,7 @@ class APIProvider:
     def __init__(self, cc, target, mode, delay=0):
         try:
             PROVIDERS = requests.get(
-                "https://github.com/ashish-123-coder/Tbomb-by-Ashish/blob/main/apidata.json"
+                "https://github.com/TheSpeedX/TBomb/raw/master/apidata.json"
                 ).json()
         except Exception:
             PROVIDERS = json.load(open('apidata.json', 'r'))
