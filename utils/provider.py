@@ -1,4 +1,3 @@
-                                                                                                                                              7 ⚙
 import threading
 import requests
 import json
