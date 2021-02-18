@@ -114,7 +114,7 @@ do
     read ch
     clear
     if [ $ch -eq 1 ];then
-        $PYTHON bomber.py --sms
+        $PYTHON bomb.py --sms
         exit
     elif [ $ch -eq 2 ];then
         $PYTHON bomb.py --call
