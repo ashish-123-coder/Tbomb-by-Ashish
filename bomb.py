@@ -50,13 +50,12 @@ def clr():
 
 def bann_text():
     clr()
-    logo = """                _    ____  _   _ ___ ____  _   _ 
-                       / \  / ___|| | | |_ _/ ___|| | | |
-                      / _ \ \___ \| |_| || |\___ \| |_| |
-                     / ___ \ ___) |  _  || | ___) |  _  |
-                    /_/   \_\____/|_| |_|___|____/|_| |_|
-
-                                         """
+    logo = """             _    ____  _   _ ___ ____  _   _ 
+                          / \  / ___|| | | |_ _/ ___|| | | |
+                         / _ \ \___ \| |_| || |\___ \| |_| |
+                        / ___ \ ___) |  _  || | ___) |  _  |
+                       /_/   \_\____/|_| |_|___|____/|_| |_|
+ """
     version = "Version: "+__VERSION__
     contributors = "Contributors: "+" ".join(__CONTRIBUTORS__)
     print(random.choice(ALL_COLORS) + logo + RESET_ALL)
@@ -126,7 +125,7 @@ def do_git_update():
         mesgdcrt.GeneralMessage("Then run command:")
         print(
             "git checkout . && "
-            "git pull  https://github.com/TheSpeedX/TBomb.git HEAD")
+            "git pull https://github.com/TheSpeedX/TBomb.git HEAD")
     sys.exit()
 
 
@@ -140,7 +139,7 @@ def update():
 def check_for_updates():
     mesgdcrt.SectionMessage("Checking for updates")
     fver = requests.get(
-            "https://github.com/ashish-123-coder/Tbomb-by-Ashish/blob/main/.version"
+            "https://raw.githubusercontent.com/TheSpeedX/TBomb/master/.version"
             ).text.strip()
     if fver != __VERSION__:
         mesgdcrt.WarningMessage("An update is available")
@@ -167,7 +166,7 @@ def get_phone_info():
     while True:
         target = ""
         cc = input(mesgdcrt.CommandMessage(
-            "Country code daalde (Without +): "))
+            "Enter your country code (Without +): "))
         cc = format_phone(cc)
         if not country_codes.get(cc, False):
             mesgdcrt.WarningMessage(
@@ -175,7 +174,7 @@ def get_phone_info():
                 " is invalid or unsupported".format(cc=cc))
             continue
         target = input(mesgdcrt.CommandMessage(
-            "Target ka number: +" + cc + " "))
+            "Enter the target number: +" + cc + " "))
         target = format_phone(target)
         if ((len(target) <= 6) or (len(target) >= 12)):
             mesgdcrt.WarningMessage(
@@ -275,7 +274,7 @@ def selectnode(mode="sms"):
         check_for_updates()
         notifyen()
 
-        max_limit = {"sms": 250, "call": 15, "mail": 200}
+        max_limit = {"sms": 500, "call": 15, "mail": 200}
         cc, target = "", ""
         if mode in ["sms", "call"]:
             cc, target = get_phone_info()
@@ -339,7 +338,7 @@ except FileNotFoundError:
 
 
 __VERSION__ = get_version()
-__CONTRIBUTORS__ = ['Ashish','Ethas Hub']
+__CONTRIBUTORS__ = ['SpeedX', 't0xic0der', 'scpketer', 'Stefan']
 
 ALL_COLORS = [Fore.GREEN, Fore.RED, Fore.YELLOW, Fore.BLUE,
               Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
