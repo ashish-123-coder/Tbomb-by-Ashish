@@ -32,14 +32,14 @@ banner() {
         figlet TBomb
     fi
     if ! [ -x "$(command -v toilet)" ]; then
-        echo -e "\e[4;34m This Bomber Was Created By \e[1;32mSpeedX \e[0m"
+        echo -e "\e[4;34m This Bomber Was Created By \e[1;32mAshish \e[0m"
     else
         echo -e "\e[1;34mCreated By \e[1;34m"
-        toilet -f mono12 -F border SpeedX
+        toilet -f mono12 -F border Ashish
     fi
     echo -e "\e[1;34m For Any Queries Join Me!!!\e[0m"
-    echo -e "\e[1;32m           Telegram: https://t.me/TBombChat \e[0m"
-    echo -e "\e[4;32m   YouTube: https://www.youtube.com/c/SpeedXTech \e[0m"
+    echo -e "\e[1;32m         Instagram:Gaming_with_aj \e[0m"
+    echo -e "\e[4;32m   Youtube:Gaming_wit_aj \e[0m"
     echo " "
 
 }
@@ -97,7 +97,7 @@ else
     echo .
     echo .
     install_deps
-    echo This Script Was Made By SpeedX > .update
+    echo This Script Was Made By Ashish > .update
     echo 'Requirements Installed....'
     pause
 fi
@@ -108,7 +108,7 @@ do
     echo " "
     echo "Press 1 To  Start SMS  Bomber "
     echo "Press 2 To  Start CALL Bomber "
-    echo "Press 3 To  Start MAIL Bomber (Not Yet Available)"
+    echo "Press 3 To  Start MAIL Bomber (Bahot Jald Aapki Seva me Haazir)"
     echo "Press 4 To  Update (Works On Linux And Linux Emulators) "
     echo "Press 5 To  Exit "
     read ch
@@ -117,15 +117,15 @@ do
         $PYTHON bomber.py --sms
         exit
     elif [ $ch -eq 2 ];then
-        $PYTHON bomber.py --call
+        $PYTHON bomb.py --call
         exit
     elif [ $ch -eq 3 ];then
-        $PYTHON bomber.py --mail
+        $PYTHON bomb.py --mail
         exit
     elif [ $ch -eq 4 ];then
         echo -e "\e[1;34m Downloading Latest Files..."
         rm -f .update
-        $PYTHON bomber.py --update
+        $PYTHON bomb.py --update
         echo -e "\e[1;34m RUN TBomb Again..."
         pause
         exit
