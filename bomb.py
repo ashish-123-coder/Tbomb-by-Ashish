@@ -126,7 +126,7 @@ def do_git_update():
         mesgdcrt.GeneralMessage("Then run command:")
         print(
             "git checkout . && "
-            "git pull https://github.com/ashish-123-coder/Tbomb-by-Ashish.git HEAD")
+            "git pull  https://github.com/TheSpeedX/TBomb.git HEAD")
     sys.exit()
 
 
