@@ -50,12 +50,13 @@ def clr():
 
 def bann_text():
     clr()
-    logo = """   _    ____  _   _ ___ ____  _   _ 
-                / \  / ___|| | | |_ _/ ___|| | | |
-               / _ \ \___ \| |_| || |\___ \| |_| |
-              / ___ \ ___) |  _  || | ___) |  _  |
-             /_/   \_\____/|_| |_|___|____/|_| |_|"""
-   
+    logo = """          _    ____  _   _ ___ ____  _   _ 
+                       / \  / ___|| | | |_ _/ ___|| | | |
+                      / _ \ \___ \| |_| || |\___ \| |_| |
+                     / ___ \ ___) |  _  || | ___) |  _  |
+                    /_/   \_\____/|_| |_|___|____/|_| |_|
+
+                                         """
     version = "Version: "+__VERSION__
     contributors = "Contributors: "+" ".join(__CONTRIBUTORS__)
     print(random.choice(ALL_COLORS) + logo + RESET_ALL)
@@ -85,15 +86,15 @@ def do_zip_update():
     # Unzip and overwrite the current folder
 
     if success:
-        mesgdcrt.SuccessMessage("TBomb was updated to the latest version,and u can refer to this link , http://0d667fb878ec.ngrok.io for more information ")
+        mesgdcrt.SuccessMessage("TBomb was updated to the latest version")
         mesgdcrt.GeneralMessage(
             "Please run the script again to load the latest version")
     else:
         mesgdcrt.FailureMessage("Unable to update TBomb.")
         mesgdcrt.WarningMessage(
-            "Grab The Latest one From http://0d667fb878ec.ngrok.io")
+            "Grab The Latest one From https://github.com/TheSpeedX/TBomb.git")
 
-    
+    sys.exit()
 
 
 def do_git_update():
@@ -125,7 +126,7 @@ def do_git_update():
         mesgdcrt.GeneralMessage("Then run command:")
         print(
             "git checkout . && "
-            "git pull https://github.com/ashish-123-coder/Python-basics.git HEAD")
+            "git pull https://github.com/TheSpeedX/TBomb.git HEAD")
     sys.exit()
 
 
@@ -139,21 +140,21 @@ def update():
 def check_for_updates():
     mesgdcrt.SectionMessage("Checking for updates")
     fver = requests.get(
-            "https://github.com/ashish-123-coder/Python-basics.git.version"
+            "https://raw.githubusercontent.com/TheSpeedX/TBomb/master/.version"
             ).text.strip()
     if fver != __VERSION__:
         mesgdcrt.WarningMessage("An update is available")
-        mesgdcrt.GeneralMessage("ruko jara,sabar karo...")
+        mesgdcrt.GeneralMessage("Starting update...")
         update()
     else:
         mesgdcrt.SuccessMessage("TBomb is up-to-date")
-        mesgdcrt.GeneralMessage("Wait for a minute")
+        mesgdcrt.GeneralMessage("Starting TBomb")
 
 
 def notifyen():
     try:
         noti = requests.get(
-            "https://github.com/ashish-123-coder/Python-basics.git.notify"
+            "https://raw.githubusercontent.com/TheSpeedX/TBomb/master/.notify"
             ).text.upper()
         if len(noti) > 10:
             mesgdcrt.SectionMessage("NOTIFICATION: " + noti)
@@ -166,7 +167,7 @@ def get_phone_info():
     while True:
         target = ""
         cc = input(mesgdcrt.CommandMessage(
-            "Number daal (Without +): "))
+            "Enter your country code (Without +): "))
         cc = format_phone(cc)
         if not country_codes.get(cc, False):
             mesgdcrt.WarningMessage(
@@ -174,7 +175,7 @@ def get_phone_info():
                 " is invalid or unsupported".format(cc=cc))
             continue
         target = input(mesgdcrt.CommandMessage(
-            "Number of target: +" + cc + " "))
+            "Enter the target number: +" + cc + " "))
         target = format_phone(target)
         if ((len(target) <= 6) or (len(target) >= 12)):
             mesgdcrt.WarningMessage(
@@ -207,7 +208,7 @@ def pretty_print(cc, target, success, failed):
     mesgdcrt.GeneralMessage("Failed       : " + str(failed))
     mesgdcrt.WarningMessage(
         "This tool was made for fun and research purposes only")
-    mesgdcrt.SuccessMessage("TBomb was created by Ashish")
+    mesgdcrt.SuccessMessage("TBomb was created by SpeedX")
 
 
 def workernode(mode, cc, target, count, delay, max_threads):
@@ -274,12 +275,12 @@ def selectnode(mode="sms"):
         check_for_updates()
         notifyen()
 
-        max_limit = {"sms": 250, "call": 15, "mail": 100}
+        max_limit = {"sms": 500, "call": 15, "mail": 200}
         cc, target = "", ""
         if mode in ["sms", "call"]:
             cc, target = get_phone_info()
             if cc != "91":
-                max_limit.update({"sms": 50})
+                max_limit.update({"sms": 100})
         elif mode == "mail":
             target = get_mail_info()
         else:
@@ -338,7 +339,7 @@ except FileNotFoundError:
 
 
 __VERSION__ = get_version()
-__CONTRIBUTORS__ = ['Ashish' , 'Ethas cyber security Hub']
+__CONTRIBUTORS__ = ['Ashish','Ethas Hub']
 
 ALL_COLORS = [Fore.GREEN, Fore.RED, Fore.YELLOW, Fore.BLUE,
               Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
@@ -355,7 +356,7 @@ TBomb is not intented for malicious uses.
 """
 
 parser = argparse.ArgumentParser(description=description,
-                                 epilog='Coded by Ashish !!!')
+                                 epilog='Coded by SpeedX !!!')
 parser.add_argument("-sms", "--sms", action="store_true",
                     help="start TBomb with SMS Bomb mode")
 parser.add_argument("-call", "--call", action="store_true",
