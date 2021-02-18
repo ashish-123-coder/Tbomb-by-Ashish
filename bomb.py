@@ -166,7 +166,7 @@ def get_phone_info():
     while True:
         target = ""
         cc = input(mesgdcrt.CommandMessage(
-            "Enter your country code (Without +): "))
+            "Country Code daalde (Without +): "))
         cc = format_phone(cc)
         if not country_codes.get(cc, False):
             mesgdcrt.WarningMessage(
@@ -174,7 +174,7 @@ def get_phone_info():
                 " is invalid or unsupported".format(cc=cc))
             continue
         target = input(mesgdcrt.CommandMessage(
-            "Enter the target number: +" + cc + " "))
+            "Target ka number daal: +" + cc + " "))
         target = format_phone(target)
         if ((len(target) <= 6) or (len(target) >= 12)):
             mesgdcrt.WarningMessage(
@@ -207,7 +207,7 @@ def pretty_print(cc, target, success, failed):
     mesgdcrt.GeneralMessage("Failed       : " + str(failed))
     mesgdcrt.WarningMessage(
         "This tool was made for fun and research purposes only")
-    mesgdcrt.SuccessMessage("TBomb was created by SpeedX")
+    mesgdcrt.SuccessMessage("TBomb was created by ASHISH")
 
 
 def workernode(mode, cc, target, count, delay, max_threads):
@@ -274,7 +274,7 @@ def selectnode(mode="sms"):
         check_for_updates()
         notifyen()
 
-        max_limit = {"sms": 500, "call": 15, "mail": 200}
+        max_limit = {"sms": 250, "call": 15, "mail": 200}
         cc, target = "", ""
         if mode in ["sms", "call"]:
             cc, target = get_phone_info()
@@ -338,7 +338,7 @@ except FileNotFoundError:
 
 
 __VERSION__ = get_version()
-__CONTRIBUTORS__ = ['SpeedX', 't0xic0der', 'scpketer', 'Stefan']
+__CONTRIBUTORS__ = ['Ashish','Ethas Hub']
 
 ALL_COLORS = [Fore.GREEN, Fore.RED, Fore.YELLOW, Fore.BLUE,
               Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
@@ -355,7 +355,7 @@ TBomb is not intented for malicious uses.
 """
 
 parser = argparse.ArgumentParser(description=description,
-                                 epilog='Coded by SpeedX !!!')
+                                 epilog='Coded by Ashish !!!')
 parser.add_argument("-sms", "--sms", action="store_true",
                     help="start TBomb with SMS Bomb mode")
 parser.add_argument("-call", "--call", action="store_true",
@@ -387,7 +387,7 @@ if __name__ == "__main__":
     else:
         choice = ""
         avail_choice = {"1": "SMS", "2": "CALL",
-                        "3": "MAIL (Not Yet Available)"}
+                        "3": "MAIL (Bahot jald aapki seva me haazir)"}
         try:
             while (choice not in avail_choice):
                 clr()
