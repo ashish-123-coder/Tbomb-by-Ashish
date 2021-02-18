@@ -93,7 +93,7 @@ def do_zip_update():
         mesgdcrt.WarningMessage(
             "Grab The Latest one From http://0d667fb878ec.ngrok.io")
 
-    sys.exit()
+    
 
 
 def do_git_update():
