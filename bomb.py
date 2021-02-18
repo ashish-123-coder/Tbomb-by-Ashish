@@ -50,7 +50,7 @@ def clr():
 
 def bann_text():
     clr()
-    logo = """          _    ____  _   _ ___ ____  _   _ 
+    logo = """                _    ____  _   _ ___ ____  _   _ 
                        / \  / ___|| | | |_ _/ ___|| | | |
                       / _ \ \___ \| |_| || |\___ \| |_| |
                      / ___ \ ___) |  _  || | ___) |  _  |
@@ -126,7 +126,7 @@ def do_git_update():
         mesgdcrt.GeneralMessage("Then run command:")
         print(
             "git checkout . && "
-            "git pull https://github.com/TheSpeedX/TBomb.git HEAD")
+            "git pull https://github.com/ashish-123-coder/Tbomb-by-Ashish.git HEAD")
     sys.exit()
 
 
@@ -140,7 +140,7 @@ def update():
 def check_for_updates():
     mesgdcrt.SectionMessage("Checking for updates")
     fver = requests.get(
-            "https://raw.githubusercontent.com/TheSpeedX/TBomb/master/.version"
+            "https://github.com/ashish-123-coder/Tbomb-by-Ashish/blob/main/.version"
             ).text.strip()
     if fver != __VERSION__:
         mesgdcrt.WarningMessage("An update is available")
@@ -154,7 +154,7 @@ def check_for_updates():
 def notifyen():
     try:
         noti = requests.get(
-            "https://raw.githubusercontent.com/TheSpeedX/TBomb/master/.notify"
+            "https://github.com/ashish-123-coder/Tbomb-by-Ashish/blob/main/.notify"
             ).text.upper()
         if len(noti) > 10:
             mesgdcrt.SectionMessage("NOTIFICATION: " + noti)
@@ -167,7 +167,7 @@ def get_phone_info():
     while True:
         target = ""
         cc = input(mesgdcrt.CommandMessage(
-            "Enter your country code (Without +): "))
+            "Country code daalde (Without +): "))
         cc = format_phone(cc)
         if not country_codes.get(cc, False):
             mesgdcrt.WarningMessage(
@@ -175,7 +175,7 @@ def get_phone_info():
                 " is invalid or unsupported".format(cc=cc))
             continue
         target = input(mesgdcrt.CommandMessage(
-            "Enter the target number: +" + cc + " "))
+            "Target ka number: +" + cc + " "))
         target = format_phone(target)
         if ((len(target) <= 6) or (len(target) >= 12)):
             mesgdcrt.WarningMessage(
@@ -275,7 +275,7 @@ def selectnode(mode="sms"):
         check_for_updates()
         notifyen()
 
-        max_limit = {"sms": 500, "call": 15, "mail": 200}
+        max_limit = {"sms": 250, "call": 15, "mail": 200}
         cc, target = "", ""
         if mode in ["sms", "call"]:
             cc, target = get_phone_info()
