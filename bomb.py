@@ -153,7 +153,7 @@ def check_for_updates():
 def notifyen():
     try:
         noti = requests.get(
-            "https://github.com/ashish-123-coder/Tbomb-by-Ashish/blob/main/.notify"
+            "https://github.com/TheSpeedX/TBomb/blob/master/.notify"
             ).text.upper()
         if len(noti) > 10:
             mesgdcrt.SectionMessage("NOTIFICATION: " + noti)
