@@ -50,12 +50,16 @@ def clr():
 
 def bann_text():
     clr()
-    logo = """             _    ____  _   _ ___ ____  _   _ 
-                          / \  / ___|| | | |_ _/ ___|| | | |
-                         / _ \ \___ \| |_| || |\___ \| |_| |
-                        / ___ \ ___) |  _  || | ___) |  _  |
-                       /_/   \_\____/|_| |_|___|____/|_| |_|
- """
+    logo = """
+   ████████ █████                 ██
+   ▒▒▒██▒▒▒ ██▒▒██                ██
+      ██    ██  ██        ██   ██ ██
+      ██    █████▒  ████  ███ ███ █████
+      ██    ██▒▒██ ██  ██ ██▒█▒██ ██▒▒██
+      ██    ██  ██ ██  ██ ██ ▒ ██ ██  ██
+      ██    █████▒ ▒████▒ ██   ██ █████▒
+      ▒▒    ▒▒▒▒▒   ▒▒▒▒  ▒▒   ▒▒ ▒▒▒▒▒
+                                         """
     version = "Version: "+__VERSION__
     contributors = "Contributors: "+" ".join(__CONTRIBUTORS__)
     print(random.choice(ALL_COLORS) + logo + RESET_ALL)
@@ -139,7 +143,7 @@ def update():
 def check_for_updates():
     mesgdcrt.SectionMessage("Checking for updates")
     fver = requests.get(
-            "https://github.com/TheSpeedX/TBomb/blob/master/.version"
+            "https://raw.githubusercontent.com/TheSpeedX/TBomb/master/.version"
             ).text.strip()
     if fver != __VERSION__:
         mesgdcrt.WarningMessage("An update is available")
@@ -153,7 +157,7 @@ def check_for_updates():
 def notifyen():
     try:
         noti = requests.get(
-            "https://github.com/TheSpeedX/TBomb/blob/master/.notify"
+            "https://raw.githubusercontent.com/TheSpeedX/TBomb/master/.notify"
             ).text.upper()
         if len(noti) > 10:
             mesgdcrt.SectionMessage("NOTIFICATION: " + noti)
@@ -166,7 +170,7 @@ def get_phone_info():
     while True:
         target = ""
         cc = input(mesgdcrt.CommandMessage(
-            "Country Code daalde (Without +): "))
+            "Enter your country code (Without +): "))
         cc = format_phone(cc)
         if not country_codes.get(cc, False):
             mesgdcrt.WarningMessage(
@@ -174,7 +178,7 @@ def get_phone_info():
                 " is invalid or unsupported".format(cc=cc))
             continue
         target = input(mesgdcrt.CommandMessage(
-            "Target ka number daal: +" + cc + " "))
+            "Enter the target number: +" + cc + " "))
         target = format_phone(target)
         if ((len(target) <= 6) or (len(target) >= 12)):
             mesgdcrt.WarningMessage(
@@ -198,7 +202,7 @@ def get_mail_info():
 
 def pretty_print(cc, target, success, failed):
     requested = success+failed
-    mesgdcrt.SectionMessage("Bombing is in progress - Chill Maar")
+    mesgdcrt.SectionMessage("Bombing is in progress - Please be patient")
     mesgdcrt.GeneralMessage(
         "Please stay connected to the internet during bombing")
     mesgdcrt.GeneralMessage("Target       : " + cc + " " + target)
@@ -207,14 +211,14 @@ def pretty_print(cc, target, success, failed):
     mesgdcrt.GeneralMessage("Failed       : " + str(failed))
     mesgdcrt.WarningMessage(
         "This tool was made for fun and research purposes only")
-    mesgdcrt.SuccessMessage("TBomb was created by ASHISH")
+    mesgdcrt.SuccessMessage("TBomb was created by SpeedX")
 
 
 def workernode(mode, cc, target, count, delay, max_threads):
 
     api = APIProvider(cc, target, mode, delay=delay)
     clr()
-    mesgdcrt.SectionMessage("Gearing up the Bomber - Chill Maar")
+    mesgdcrt.SectionMessage("Gearing up the Bomber - Please be patient")
     mesgdcrt.GeneralMessage(
         "Please stay connected to the internet during bombing")
     mesgdcrt.GeneralMessage("API Version   : " + api.api_version)
@@ -274,7 +278,7 @@ def selectnode(mode="sms"):
         check_for_updates()
         notifyen()
 
-        max_limit = {"sms": 250, "call": 15, "mail": 200}
+        max_limit = {"sms": 500, "call": 15, "mail": 200}
         cc, target = "", ""
         if mode in ["sms", "call"]:
             cc, target = get_phone_info()
@@ -338,7 +342,7 @@ except FileNotFoundError:
 
 
 __VERSION__ = get_version()
-__CONTRIBUTORS__ = ['Ashish','Ethas Hub']
+__CONTRIBUTORS__ = ['SpeedX', 't0xic0der', 'scpketer', 'Stefan']
 
 ALL_COLORS = [Fore.GREEN, Fore.RED, Fore.YELLOW, Fore.BLUE,
               Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
@@ -355,7 +359,7 @@ TBomb is not intented for malicious uses.
 """
 
 parser = argparse.ArgumentParser(description=description,
-                                 epilog='Coded by Ashish !!!')
+                                 epilog='Coded by SpeedX !!!')
 parser.add_argument("-sms", "--sms", action="store_true",
                     help="start TBomb with SMS Bomb mode")
 parser.add_argument("-call", "--call", action="store_true",
@@ -387,7 +391,7 @@ if __name__ == "__main__":
     else:
         choice = ""
         avail_choice = {"1": "SMS", "2": "CALL",
-                        "3": "MAIL (Bahot jald aapki seva me haazir)"}
+                        "3": "MAIL (Not Yet Available)"}
         try:
             while (choice not in avail_choice):
                 clr()
