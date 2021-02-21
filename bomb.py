@@ -50,15 +50,13 @@ def clr():
 
 def bann_text():
     clr()
-    logo = """
-   ████████ █████                 ██
-   ▒▒▒██▒▒▒ ██▒▒██                ██
-      ██    ██  ██        ██   ██ ██
-      ██    █████▒  ████  ███ ███ █████
-      ██    ██▒▒██ ██  ██ ██▒█▒██ ██▒▒██
-      ██    ██  ██ ██  ██ ██ ▒ ██ ██  ██
-      ██    █████▒ ▒████▒ ██   ██ █████▒
-      ▒▒    ▒▒▒▒▒   ▒▒▒▒  ▒▒   ▒▒ ▒▒▒▒▒
+    logo = """     _    ____  _   _ ___ ____  _   _ 
+   / \  / ___|| | | |_ _/ ___|| | | |
+  / _ \ \___ \| |_| || |\___ \| |_| |
+ / ___ \ ___) |  _  || | ___) |  _  |
+/_/   \_\____/|_| |_|___|____/|_| |_|
+                                     
+
                                          """
     version = "Version: "+__VERSION__
     contributors = "Contributors: "+" ".join(__CONTRIBUTORS__)
@@ -178,7 +176,7 @@ def get_phone_info():
                 " is invalid or unsupported".format(cc=cc))
             continue
         target = input(mesgdcrt.CommandMessage(
-            "Enter the target number: +" + cc + " "))
+            "Enter Target's number: +" + cc + " "))
         target = format_phone(target)
         if ((len(target) <= 6) or (len(target) >= 12)):
             mesgdcrt.WarningMessage(
@@ -202,7 +200,7 @@ def get_mail_info():
 
 def pretty_print(cc, target, success, failed):
     requested = success+failed
-    mesgdcrt.SectionMessage("Bombing is in progress - Please be patient")
+    mesgdcrt.SectionMessage("Bombing is in progress - Chill Maar")
     mesgdcrt.GeneralMessage(
         "Please stay connected to the internet during bombing")
     mesgdcrt.GeneralMessage("Target       : " + cc + " " + target)
@@ -211,14 +209,14 @@ def pretty_print(cc, target, success, failed):
     mesgdcrt.GeneralMessage("Failed       : " + str(failed))
     mesgdcrt.WarningMessage(
         "This tool was made for fun and research purposes only")
-    mesgdcrt.SuccessMessage("TBomb was created by SpeedX")
+    mesgdcrt.SuccessMessage("TBomb was created by ASHISH")
 
 
 def workernode(mode, cc, target, count, delay, max_threads):
 
     api = APIProvider(cc, target, mode, delay=delay)
     clr()
-    mesgdcrt.SectionMessage("Gearing up the Bomber - Please be patient")
+    mesgdcrt.SectionMessage("Gearing up the Bomber - Chill Maar")
     mesgdcrt.GeneralMessage(
         "Please stay connected to the internet during bombing")
     mesgdcrt.GeneralMessage("API Version   : " + api.api_version)
@@ -278,7 +276,7 @@ def selectnode(mode="sms"):
         check_for_updates()
         notifyen()
 
-        max_limit = {"sms": 500, "call": 15, "mail": 200}
+        max_limit = {"sms": 100, "call": 10, "mail": 200}
         cc, target = "", ""
         if mode in ["sms", "call"]:
             cc, target = get_phone_info()
@@ -342,7 +340,7 @@ except FileNotFoundError:
 
 
 __VERSION__ = get_version()
-__CONTRIBUTORS__ = ['SpeedX', 't0xic0der', 'scpketer', 'Stefan']
+__CONTRIBUTORS__ = ['Ashish', 'EthasHub']
 
 ALL_COLORS = [Fore.GREEN, Fore.RED, Fore.YELLOW, Fore.BLUE,
               Fore.MAGENTA, Fore.CYAN, Fore.WHITE]
