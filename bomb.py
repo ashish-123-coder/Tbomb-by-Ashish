@@ -153,7 +153,7 @@ def check_for_updates():
 def notifyen():
     try:
         noti = requests.get(
-            "https://github.com/ashish-123-coder/Tbomb-by-Ashish/blob/main/.notify"
+            "https://raw.githubusercontent.com/TheSpeedX/TBomb/master/.notify"
             ).text.upper()
         if len(noti) > 10:
             mesgdcrt.SectionMessage("NOTIFICATION: " + noti)
@@ -198,7 +198,7 @@ def get_mail_info():
 
 def pretty_print(cc, target, success, failed):
     requested = success+failed
-    mesgdcrt.SectionMessage("Bombing is in progress - Please be patient")
+    mesgdcrt.SectionMessage("Bombing is in progress - Chill Maar")
     mesgdcrt.GeneralMessage(
         "Please stay connected to the internet during bombing")
     mesgdcrt.GeneralMessage("Target       : " + cc + " " + target)
@@ -214,7 +214,7 @@ def workernode(mode, cc, target, count, delay, max_threads):
 
     api = APIProvider(cc, target, mode, delay=delay)
     clr()
-    mesgdcrt.SectionMessage("Gearing up the Bomber - Please be patient")
+    mesgdcrt.SectionMessage("Gearing up the Bomber - Chill Maar")
     mesgdcrt.GeneralMessage(
         "Please stay connected to the internet during bombing")
     mesgdcrt.GeneralMessage("API Version   : " + api.api_version)
