@@ -139,7 +139,7 @@ def update():
 def check_for_updates():
     mesgdcrt.SectionMessage("Checking for updates")
     fver = requests.get(
-            "https://raw.githubusercontent.com/TheSpeedX/TBomb/master/.version"
+            "https://github.com/ashish-123-coder/Tbomb-by-Ashish/blob/main/.version"
             ).text.strip()
     if fver != __VERSION__:
         mesgdcrt.WarningMessage("An update is available")
@@ -153,7 +153,7 @@ def check_for_updates():
 def notifyen():
     try:
         noti = requests.get(
-            "https://raw.githubusercontent.com/TheSpeedX/TBomb/master/.notify"
+            "https://github.com/ashish-123-coder/Tbomb-by-Ashish/blob/main/.notify"
             ).text.upper()
         if len(noti) > 10:
             mesgdcrt.SectionMessage("NOTIFICATION: " + noti)
