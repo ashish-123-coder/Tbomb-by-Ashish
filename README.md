@@ -12,3 +12,6 @@ Made by Ashish
 
 Script by - Speed-X
 modified by Ashish.
+
+
+#This tool is for fun purpose only.
